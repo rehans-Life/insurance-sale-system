@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  position: relative;
+  height: auto;
+}
+
+.special:empty {
+  display: none;
+}
+
+.special {
+  background-color: rgb(107, 0, 169);
+  padding: 14px;
+  color: white;
+  font-weight: 800;
+  font-size: 1.25rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}

@@ -1,0 +1,9 @@
+<label class="label">{{ label }}</label>
+<app-grid-four>
+  <app-radio
+    *ngFor="let option of options"
+    [label]="option"
+    [control]="control"
+    [name]="name"
+  ></app-radio>
+</app-grid-four>

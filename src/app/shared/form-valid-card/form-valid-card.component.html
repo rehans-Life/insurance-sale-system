@@ -1,0 +1,13 @@
+<app-form-card>
+  <div class="valid-card">
+    <div class="tick">
+      <mat-icon class="check-icon">check</mat-icon>
+    </div>
+    <div class="edit" (click)="onClick()">
+      <mat-icon class="edit-icon">edit</mat-icon>
+    </div>
+    <h1 class="info"><ng-content select=".info"></ng-content></h1>
+    <h1 class="main"><ng-content select=".main"></ng-content></h1>
+    <p class="sub-main"><ng-content select=".sub-main"></ng-content></p>
+  </div>
+</app-form-card>

@@ -1,0 +1,48 @@
+<form [formGroup]="carRegistrationTypeForm">
+  <app-heading>
+    <ng-container heading>Car Registration</ng-container>
+    <ng-container subheading>Select registration status</ng-container>
+  </app-heading>
+  <div class="divider"></div>
+  <app-radio-group
+    label="Is your car brand new or already registered?"
+    [options]="registrationTypes"
+    [control]="carRegistrationTypeForm | extractControl : 'type'"
+    name="registrationType"
+  ></app-radio-group>
+  <div class="space"></div>
+  <ng-container *ngIf="showRegisteredDate()">
+    <app-grid-four>
+      <app-select
+        label="Year of Registration"
+        [options]="years | convert : 'year'"
+        [value]="
+          carRegistrationTypeForm.controls['yearOfRegistration'].value || ''
+        "
+        (change)="
+          carRegistrationTypeForm.controls['yearOfRegistration'].setValue(
+            $event.label
+          )
+        "
+      ></app-select>
+      <app-select
+        label="Month of Registration"
+        *ngIf="
+          (carRegistrationTypeForm | extractControl : 'yearOfRegistration')
+            .value
+        "
+        [options]="months | convert : 'month'"
+        [value]="
+          (carRegistrationTypeForm | extractControl : 'monthOfRegistration')
+            .value || ''
+        "
+        (change)="
+          carRegistrationTypeForm.controls.monthOfRegistration.setValue(
+            $event.label
+          )
+        "
+      ></app-select>
+    </app-grid-four>
+    <div class="space"></div>
+  </ng-container>
+</form>

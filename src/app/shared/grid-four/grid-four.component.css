@@ -1,0 +1,12 @@
+.grid-four {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .grid-four {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 10px;
+  }
+}

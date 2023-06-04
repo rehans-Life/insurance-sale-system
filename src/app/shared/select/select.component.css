@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  color: black;
+  position: relative;
+  width: auto;
+}
+
+.select {
+  border: 1px solid rgb(107, 0, 169);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.6);
+  min-width: max-content;
+}
+
+.options {
+  border: 1px solid rgb(107, 0, 169);
+  background-color: white;
+  border-radius: 4px;
+  padding-bottom: 7px;
+  max-height: 150px;
+  overflow-y: scroll;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
+.option {
+  font-size: 15px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: rgb(107, 0, 169);
+  color: white;
+}
+
+.query {
+  display: flex;
+  position: sticky;
+  background-color: white;
+  z-index: 10;
+  top: 0;
+  align-items: center;
+  padding: 7px;
+  justify-content: center;
+  border-bottom: 1px solid rgb(107, 0, 169);
+}
+
+.query input {
+  outline: none;
+  font-family: Poppins;
+  border: 1px solid rgb(107, 0, 169);
+  width: 100%;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.label {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1000px) {
+  .label {
+    font-size: 12px;
+  }
+}

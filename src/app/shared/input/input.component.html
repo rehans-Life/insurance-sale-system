@@ -1,0 +1,30 @@
+<div class="field">
+  <label [for]="label">{{ label }}</label>
+  <input
+    [id]="label"
+    [formControl]="control"
+    [placeholder]="placeholder"
+    [type]="type"
+    autocomplete="off"
+    [ngClass]="{ 'error-input': showErrors() }"
+  />
+</div>
+<ng-container *ngIf="showErrors()">
+  <p class="error" *ngIf="control.hasError('required')">
+    {{ label }} is required
+  </p>
+  <p class="error" *ngIf="control.hasError('minlength')">
+    {{ label }} should be of
+    {{ control.getError("minlength")?.requiredLength }}
+    characters
+  </p>
+  <p class="error" *ngIf="control.hasError('invalid')">
+    Provided {{ label }} is invalid
+  </p>
+  <p class="error" *ngIf="control.hasError('networkError')">
+    No Internet Connection
+  </p>
+  <p class="error" *ngIf="control.hasError('unknownError')">
+    Server Error, Please try again later
+  </p>
+</ng-container>

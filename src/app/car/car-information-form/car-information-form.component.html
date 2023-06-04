@@ -1,0 +1,18 @@
+<form [formGroup]="carInformationForm">
+  <app-car-details [cardetailsForm]="cardetailsForm"></app-car-details>
+  <ng-container *ngIf="cardetailsForm.valid">
+    <div class="space"></div>
+    <app-heading>
+      <ng-container heading>Engine size / Cubic Capacity</ng-container>
+      <ng-container subheading
+        >Select the engine capacity of your car</ng-container
+      >
+    </app-heading>
+    <div class="divider"></div>
+    <app-radio-group
+      [options]="engine_sizes"
+      [control]="carInformationForm | extractControl : 'engine_size'"
+      name="engine_size"
+    ></app-radio-group>
+  </ng-container>
+</form>

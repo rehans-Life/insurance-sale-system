@@ -1,0 +1,50 @@
+<form [formGroup]="insuranceDetails">
+  <ng-container *ngIf="registrationType === 'Registered'">
+    <app-heading>
+      <ng-container heading>Existing Insurance Details</ng-container>
+      <ng-container subheading
+        >Please provide details on your existing insurance policy</ng-container
+      >
+    </app-heading>
+    <div class="divider"></div>
+    <app-radio-group
+      label="Do you have an existing insurance on this car?"
+      name="existing_insurance"
+      [options]="options"
+      [control]="insuranceDetails | extractControl : 'existingInsurance'"
+    ></app-radio-group>
+    <div class="space"></div>
+  </ng-container>
+  <ng-container *ngIf="existingInsurance">
+    <app-heading>
+      <ng-container heading>Insurance Period</ng-container>
+      <ng-container subheading
+        >Let us know when would you like the new insurance to start.
+      </ng-container>
+    </app-heading>
+    <div class="divider"></div>
+    <app-grid-four>
+      <app-date-picker
+        class="span-2"
+        label="Expiry date of Existing Insurance"
+        placeholder="Policy Expiry Date"
+        [control]="insuranceDetails | extractControl : 'existingExpiryDate'"
+        [minDate]="today"
+        *ngIf="existingInsurance === 'Yes'"
+      ></app-date-picker>
+      <app-date-picker
+        class="span-2"
+        label="Start Date of New Insurance"
+        placeholder="Select Policy Start Date"
+        [control]="insuranceDetails | extractControl : 'newStartDate'"
+        [minDate]="today"
+        [value]="
+          convertToDate(
+            (insuranceDetails | extractControl : 'newStartDate').value || ''
+          )
+        "
+        [disabled]="existingInsurance === 'Yes'"
+      ></app-date-picker>
+    </app-grid-four>
+  </ng-container>
+</form>

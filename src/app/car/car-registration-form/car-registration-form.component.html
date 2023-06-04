@@ -1,0 +1,10 @@
+<form [formGroup]="carRegistrationForm">
+  <app-car-type-form
+    [carRegistrationTypeForm]="carRegistrationTypeForm"
+  ></app-car-type-form>
+  <ng-container *ngIf="carRegistrationTypeForm.valid">
+    <app-car-ownership-form
+      [carOwnershipForm]="carOwnershipForm"
+    ></app-car-ownership-form>
+  </ng-container>
+</form>

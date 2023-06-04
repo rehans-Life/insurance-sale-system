@@ -1,0 +1,43 @@
+<form [formGroup]="cardetailsForm" class="form" id="form">
+  <app-heading>
+    <ng-container heading>Car Details</ng-container>
+    <ng-container subheading
+      >Select the car you would like to insure</ng-container
+    >
+  </app-heading>
+  <div class="divider"></div>
+  <app-grid-four>
+    <app-select
+      label="Car Make"
+      [options]="carMakers | convert : 'car'"
+      [value]="(cardetailsForm | extractControl : 'carMake').value"
+      (change)="onChange('carMake', $event)"
+    ></app-select>
+    <app-select
+      *ngIf="
+        (cardetailsForm | extractControl : 'carMake').value && carModels.length
+      "
+      label="Car Model"
+      [options]="carModels | convert : 'car_model'"
+      [value]="(cardetailsForm | extractControl : 'carModel').value"
+      (change)="onChange('carModel', $event)"
+    ></app-select>
+    <app-select
+      label="Model Year"
+      *ngIf="
+        (cardetailsForm | extractControl : 'carModel').value &&
+        modelYears.length
+      "
+      [options]="modelYears | convert : 'car_model_year'"
+      [value]="(cardetailsForm | extractControl : 'modelYear').value"
+      (change)="onChange('modelYear', $event)"
+    ></app-select>
+    <app-input
+      *ngIf="(cardetailsForm | extractControl : 'modelYear').value"
+      label="Car Value"
+      [control]="cardetailsForm | extractControl : 'carValue'"
+      placeholder="BD"
+      type="number"
+    ></app-input>
+  </app-grid-four>
+</form>

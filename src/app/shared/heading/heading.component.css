@@ -1,0 +1,18 @@
+h1 {
+  font-size: x-large;
+}
+
+p {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: large;
+  }
+
+  p {
+    font-size: 11px;
+  }
+}

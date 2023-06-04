@@ -1,0 +1,76 @@
+.container {
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 25px;
+}
+
+.span-select {
+  grid-column: span 2;
+}
+
+.forms {
+  grid-column: span 9;
+}
+
+.form {
+  padding: 2rem;
+}
+
+.qoutation {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.submit-btn {
+  background-color: #ff375e;
+  box-shadow: 0 0 2px 0px #ff375e;
+  text-align: center;
+  padding: 12px;
+  font-family: Poppins;
+  cursor: pointer;
+  border: none;
+  font-size: 1.05rem;
+  border-radius: 3px;
+  color: whitesmoke;
+  width: 200px;
+  transition: all ease-out 100ms;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 1000px) {
+  .qoutation {
+    display: none;
+  }
+  .forms {
+    grid-column: span 12;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 800px) {
+  .container {
+    padding: 5rem;
+    column-gap: 15px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    padding: 20px;
+  }
+  .action {
+    justify-content: center;
+  }
+  .submit-btn {
+    width: 150px;
+    padding: 10px;
+  }
+}

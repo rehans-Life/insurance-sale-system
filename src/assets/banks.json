@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "bank": "Ahli United Bank"
+    },
+    {
+        "id": 2,
+        "bank": "Al Baraka Banking Group"
+    },
+    {
+        "id": 3,
+        "bank": "Bank ABC"
+    },
+    {
+        "id": 4,
+        "bank": "Bank of Bahrain and Kuwait"
+    },
+    {
+        "id": 5,
+        "bank": "KFH Bahrain"
+    },
+    {
+        "id": 6,
+        "bank": "National Bank of Bahrain"
+    },
+    {
+        "id": 7,
+        "bank": "RBC Bank International (Bahrain)"
+    },
+    {
+        "id": 8,
+        "bank": "Standard Chartered Bank (Bahrain)"
+    },
+    {
+        "id": 9,
+        "bank": "United Gulf Bank"
+    },
+    {
+        "id": 10,
+        "bank": "Warba Bank"
+    }
+]

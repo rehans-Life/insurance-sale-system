@@ -1,0 +1,24 @@
+<form [formGroup]="insuranceOwnerForm">
+  <app-heading>
+    <ng-container heading>Insurance Owner Information</ng-container>
+    <ng-container subheading
+      >Almost there, we just need your details and that's it!</ng-container
+    >
+  </app-heading>
+  <div class="divider"></div>
+  <app-grid-four>
+    <app-input
+      placeholder="Enter CPR No."
+      label="CPR Number"
+      [control]="insuranceOwnerForm | extractControl : 'cprNo'"
+    ></app-input>
+    <app-date-picker
+      placeholder="Select date of birth"
+      label="Date of Birth"
+      [control]="insuranceOwnerForm | extractControl : 'dob'"
+      *ngIf="(insuranceOwnerForm | extractControl : 'cprNo').valid"
+      [maxDate]="getMaxDate()"
+    >
+    </app-date-picker>
+  </app-grid-four>
+</form>

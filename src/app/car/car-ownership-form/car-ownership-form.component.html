@@ -1,0 +1,26 @@
+<form [formGroup]="carOwnershipForm">
+  <app-heading>
+    <ng-container heading>Car Ownership</ng-container>
+    <ng-container subheading>Select ownership status</ng-container>
+  </app-heading>
+  <div class="divider"></div>
+  <app-radio-group
+    label="Do you have a car loan for this car?"
+    [control]="carOwnershipForm | extractControl : 'carloan'"
+    [options]="['Yes', 'No']"
+    name="carloan"
+  >
+  </app-radio-group>
+  <div class="space"></div>
+  <app-grid-four>
+    <app-select
+      class="span-2"
+      *ngIf="showBankSelect()"
+      label="Bank/Lender name"
+      (change)="carOwnershipForm.controls.bankName.setValue($event.label)"
+      [value]="(carOwnershipForm | extractControl : 'bankName').value"
+      [options]="banks | convert : 'bank'"
+    >
+    </app-select>
+  </app-grid-four>
+</form>

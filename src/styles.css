@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700;1,800&family=Roboto:wght@100;300;400;500;700&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Poppins;
+  background-color: #f3f3f1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.space {
+  padding: 15px 0;
+}
+
+.divider {
+  width: 100%;
+  padding: 0.01rem;
+  margin: 13px 0;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.label {
+  font-size: 14px;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+@media screen and (max-width: 800px) {
+  .label {
+    font-size: 13px;
+  }
+  .span-2 {
+    grid-column: span 1;
+  }
+}

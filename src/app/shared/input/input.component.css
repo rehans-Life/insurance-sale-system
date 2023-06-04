@@ -1,0 +1,46 @@
+.field {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  row-gap: 4px;
+}
+
+.field input {
+  border: 1px solid rgb(107, 0, 169);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 8.5px 5px;
+  outline: none;
+  display: block;
+  transition: all ease-in 200ms;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.field input::placeholder {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.error-input {
+  border: 1px solid rgb(255, 4, 4) !important;
+  color: rgb(221, 21, 21);
+}
+
+.error {
+  color: rgb(221, 21, 21);
+  font-size: 11px;
+}
+
+.field label {
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1000px) {
+  .field label {
+    font-size: 12px;
+  }
+}

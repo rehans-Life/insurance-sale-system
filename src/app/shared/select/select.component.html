@@ -1,0 +1,25 @@
+<div class="container" (click)="handleClick($event)">
+  <div class="label">
+    {{ label }}
+  </div>
+  <div class="select">
+    <p>{{ value }}</p>
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </div>
+  <div [appDropdown]="el" class="options" *ngIf="showOptions">
+    <form
+      class="query"
+      [formGroup]="queryForm"
+      (click)="$event.stopPropagation()"
+    >
+      <input formControlName="query" [placeholder]="placeholder" />
+    </form>
+    <div
+      class="option"
+      (click)="onChange(option)"
+      *ngFor="let option of filteredOptions() | async"
+    >
+      {{ option.label }}
+    </div>
+  </div>
+</div>

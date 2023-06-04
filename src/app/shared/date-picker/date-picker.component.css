@@ -1,0 +1,58 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.date-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgb(107, 0, 169);
+  border-radius: 4px;
+  padding: 1px;
+  font-weight: 500;
+  padding: 6px;
+  position: relative;
+}
+
+.date-field input {
+  flex: 1;
+  padding: 3px;
+  font-family: Poppins;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.datePicker {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  z-index: 10;
+  padding: 5px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.date-field input::placeholder {
+  font-size: 12px;
+}
+
+.field label {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1000px) {
+  .field label {
+    font-size: 12px;
+  }
+}

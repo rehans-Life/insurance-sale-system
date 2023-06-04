@@ -1,0 +1,27 @@
+<app-form-card>
+  <ng-container class="special">
+    <ng-content select=".special"></ng-content>
+  </ng-container>
+  <div class="qoutation-card">
+    <div class="list" *ngFor="let form of Collections">
+      <div class="list-head">
+        <mat-icon class="check">check</mat-icon>
+        <h1>{{ form[0] }}</h1>
+      </div>
+      <div class="list-items">
+        <ng-container *ngFor="let item of convert(form[1])">
+          <div class="list-item" *ngIf="item[1]">
+            <span class="label">{{ item[0] }}</span>
+            <span class="value">{{
+              item[0].toLowerCase().includes("date")
+                ? (item[1] | date : "dd-MM-YYYY")
+                : item[0].toLowerCase().includes("value")
+                ? (item[1] | currency : "BHD" : "symbol" : "0.0-2")
+                : item[1]
+            }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</app-form-card>

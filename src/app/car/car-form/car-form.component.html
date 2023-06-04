@@ -1,0 +1,175 @@
+<form [formGroup]="completeInsuranceForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="forms">
+      <ng-container
+        *ngIf="showCarInformationForm | async; then formCard; else checkedCard"
+      ></ng-container>
+      <ng-template #checkedCard>
+        <app-form-valid-card (edit)="showCarInformationForm.next(true)">
+          <ng-container class="info">Your CAR details</ng-container>
+          <ng-container class="main">
+            {{ (cardetailsForm | extractControl : "carMake").value }}
+            {{ (cardetailsForm | extractControl : "carModel").value }}
+          </ng-container>
+          <ng-container class="sub-main">
+            Model:
+            {{ (cardetailsForm | extractControl : "modelYear").value }},
+            Engine/CC:
+            {{ (carInformationForm | extractControl : "engine_size").value }}
+          </ng-container>
+        </app-form-valid-card>
+      </ng-template>
+      <ng-template #formCard>
+        <app-form-card>
+          <div class="form">
+            <app-car-information-form
+              [carInformationForm]="carInformationForm"
+            ></app-car-information-form>
+          </div>
+        </app-form-card>
+      </ng-template>
+      <div class="space"></div>
+      <ng-container *ngIf="carInformationForm.valid">
+        <ng-container
+          *ngIf="
+            showCarRegistrationForm | async;
+            then registrationformCard;
+            else registrationValidCard
+          "
+        ></ng-container>
+        <ng-template #registrationValidCard>
+          <app-form-valid-card (edit)="showCarRegistrationForm.next(true)">
+            <ng-container class="info"
+              >Car registration & ownership</ng-container
+            >
+            <ng-container class="main">{{
+              carRegistrationTypeForm.value.type
+            }}</ng-container>
+            <ng-container class="sub-main"
+              >Loan:
+              {{
+                carOwnershipForm.value.carloan === "No"
+                  ? carOwnershipForm.value.carloan
+                  : carOwnershipForm.value.bankName
+              }}</ng-container
+            >
+          </app-form-valid-card>
+        </ng-template>
+        <ng-template #registrationformCard>
+          <app-form-card>
+            <div class="form">
+              <app-car-registration-form
+                [carRegistrationForm]="carRegistrationForm"
+              ></app-car-registration-form>
+            </div>
+          </app-form-card>
+        </ng-template>
+      </ng-container>
+      <div class="space"></div>
+      <ng-container *ngIf="carRegistrationForm.valid">
+        <ng-container
+          *ngIf="
+            showInsuranceDetailsForm | async;
+            then insuranceFormCard;
+            else insuranceValidCard
+          "
+        ></ng-container>
+        <ng-template #insuranceValidCard>
+          <app-form-valid-card (edit)="showInsuranceDetailsForm.next(true)">
+            <ng-container class="info">INSURANCE PLAN & PERIOD</ng-container>
+            <ng-container class="main"
+              >New Insurance starts on
+              {{
+                (insuranceDetails | extractControl : "newStartDate").value
+                  | date : "dd-MM-YYYY"
+              }}</ng-container
+            >
+            <ng-container
+              class="sub-main"
+              *ngIf="
+                (insuranceDetails | extractControl : 'existingExpiryDate').value
+              "
+              >Existing Insurance:
+              {{
+                (insuranceDetails | extractControl : "existingExpiryDate").value
+                  | date : "dd-MM-YYYY"
+              }}, Expiry Date:
+              {{
+                (insuranceDetails | extractControl : "existingExpiryDate").value
+                  | date : "dd-MM-YYYY"
+              }}
+            </ng-container>
+          </app-form-valid-card>
+        </ng-template>
+        <ng-template #insuranceFormCard>
+          <app-form-card>
+            <div class="form">
+              <app-insurance-details-form
+                [insuranceDetails]="insuranceDetails"
+                [registrationType]="
+                  (carRegistrationTypeForm | extractControl : 'type').value ||
+                  ''
+                "
+              ></app-insurance-details-form>
+            </div>
+          </app-form-card>
+        </ng-template>
+      </ng-container>
+      <div class="space"></div>
+      <ng-container *ngIf="insuranceDetails.valid">
+        <ng-container
+          *ngIf="
+            showInsuranceOwnerInformationForm | async;
+            then insuranceOwnerFormCard;
+            else insuranceOwnerCheckedCard
+          "
+        ></ng-container>
+        <ng-template #insuranceOwnerCheckedCard>
+          <app-form-valid-card
+            (edit)="showInsuranceOwnerInformationForm.next(true)"
+          >
+            <ng-container class="info"
+              >INSURANCE OWNER INFORMATION</ng-container
+            >
+            <ng-container class="main"
+              >CPR
+              {{
+                (insuranceOwnerInformationForm | extractControl : "cprNo").value
+              }}</ng-container
+            >
+            <ng-container class="sub-main"
+              >Date of Birth:
+              {{
+                (insuranceOwnerInformationForm | extractControl : "dob").value
+                  | date : "dd-MM-YYYY"
+              }}</ng-container
+            >
+          </app-form-valid-card>
+        </ng-template>
+        <ng-template #insuranceOwnerFormCard>
+          <app-form-card>
+            <div class="form">
+              <app-insurance-owner-form
+                [insuranceOwnerForm]="insuranceOwnerInformationForm"
+              ></app-insurance-owner-form>
+            </div>
+          </app-form-card>
+        </ng-template>
+      </ng-container>
+      <div class="space"></div>
+      <div *ngIf="completeInsuranceForm.valid" class="action">
+        <button type="submit" class="submit-btn">Get Qoute</button>
+      </div>
+    </div>
+    <div class="qoutation">
+      <app-qoutation
+        [carRegistrationForm]="carRegistrationForm"
+        [carInformationForm]="carInformationForm"
+        [insuranceDetails]="insuranceDetails"
+        [insuranceOwnerInformationForm]="insuranceOwnerInformationForm"
+      >
+        <ng-container class="special">Your Qoutation</ng-container>
+      </app-qoutation>
+    </div>
+  </div>
+</form>

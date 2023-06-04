@@ -1,0 +1,21 @@
+<div class="field">
+  <label class="label">{{ label }}</label>
+  <div class="date-field">
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [placeholder]="placeholder"
+      [formControl]="control"
+      [min]="minDate"
+      [max]="maxDate"
+    />
+    <div
+      (click)="picker.open()"
+      class="datePicker"
+      [ngStyle]="{ 'pointer-events': disabled && 'none' }"
+    >
+      <mat-icon>date_range</mat-icon>
+    </div>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+</div>
